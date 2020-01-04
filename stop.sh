@@ -1,0 +1,8 @@
+ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@172.31.4.25 "pgrep -f dsm | xargs kill -KILL"
+ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@172.31.4.25 "pgrep -f dstat | xargs kill -KILL"
+ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@172.31.2.249 "pgrep -f dsm | xargs kill -KILL"
+ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@172.31.2.249 "pgrep -f dstat | xargs kill -KILL"
+ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@172.31.5.152 "pgrep -f dsm | xargs kill -KILL"
+ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@172.31.5.152 "pgrep -f dstat | xargs kill -KILL"
+ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@172.31.14.176 "pgrep -f dsm | xargs kill -KILL"
+ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@172.31.14.176 "pgrep -f dstat | xargs kill -KILL"
