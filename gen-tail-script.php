@@ -12,7 +12,7 @@
 	for ( $i = 0; $i < $len; $i++ ){
 		for ( $j = 0; $j < $len; $j++ ){
 			$idx = $j + $len*$i;
-			$cmd = "ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@".$ips[$idx]." \"tail -f $ips[$idx].$port.log\" &\n";
+			$cmd = "ssh -i ~/.ssh/$key_name.pem -t -o StrictHostKeyChecking=no centos@".$ips[$idx]." \"tail -f $ips[$idx].$port.log\" &\n";
 			echo $cmd;
 		}
 	}

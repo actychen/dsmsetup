@@ -19,9 +19,9 @@
 			if ( $j != 0 ) $w = $ips[$idx-1];
 			if ( $j != $len-1 ) $e = $ips[$idx+1];
 
-			$cmd = "scp -i ~/.ssh/ec2ymok.pem centos@".$ips[$idx].":/home/centos/dstat.$ips[$idx].$port.csv ./logs/ \n";
+			$cmd = "scp -i ~/.ssh/$key_name.pem centos@".$ips[$idx].":/home/centos/dstat.$ips[$idx].$port.csv ./logs/ \n";
 			echo $cmd;
-			$cmd = "scp -i ~/.ssh/ec2ymok.pem centos@".$ips[$idx].":/home/centos/logs/\* ./logs/ \n";
+			$cmd = "scp -i ~/.ssh/$key_name.pem centos@".$ips[$idx].":/home/centos/logs/\* ./logs/ \n";
 			echo $cmd;
 		}
 	}

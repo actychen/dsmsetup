@@ -10,7 +10,7 @@
 	echo "instance id list\n";
 	print_r( $instance_ids );
 
-	echo "start ok ? (y/n) > ";
+	echo "ok ? (y/n) > ";
 	$stdin = trim( fgets(STDIN), "\n");
 	if ( $stdin == "y" ){
 		$cmd = "aws ec2 terminate-instances --instance-ids $instance_ids_line | jq '.TerminatingInstances[] | {InstanceId, CurrentState: .CurrentState.Name, PreviousState: .PreviousState.Name}'";

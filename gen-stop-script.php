@@ -11,9 +11,9 @@
 	for ( $i = 0; $i < $len; $i++ ){
 		for ( $j = 0; $j < $len; $j++ ){
 			$idx = $j + $len*$i;
-			$cmd = "ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@".$ips[$idx]." \"pgrep -f dsm | xargs kill -KILL\"\n";
+			$cmd = "ssh -i ~/.ssh/$key_name.pem -t -o StrictHostKeyChecking=no centos@".$ips[$idx]." \"pgrep -f dsm | xargs kill -KILL\"\n";
 			echo $cmd;
-			$cmd = "ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@".$ips[$idx]." \"pgrep -f dstat | xargs kill -KILL\"\n";
+			$cmd = "ssh -i ~/.ssh/$key_name.pem -t -o StrictHostKeyChecking=no centos@".$ips[$idx]." \"pgrep -f dstat | xargs kill -KILL\"\n";
 			echo $cmd;
 		}
 	}

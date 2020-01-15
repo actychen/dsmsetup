@@ -19,15 +19,17 @@
 			if ( $j != 0 ) $w = $ips[$idx-1];
 			if ( $j != $len-1 ) $e = $ips[$idx+1];
 
-			$cmd = "ssh -i ~/.ssh/ec2ymok.pem -t -o StrictHostKeyChecking=no centos@".$ips[$idx]." 'java -jar tiled-dsm/target/dsm-jar-with-dependencies.jar -port $port";
-			if ( $n != "" ) $cmd.= " -a_n $n:$port";
-			if ( $e != "" ) $cmd.= " -a_e $e:$port";
-			if ( $s != "" ) $cmd.= " -a_s $s:$port";
-			if ( $w != "" ) $cmd.= " -a_w $w:$port";
-			$cmd.=" -log_filename $ips[$idx].$port -log_interval 5";
+			$cmd = "ssh -i ~/.ssh/$key_name.pem -t -o StrictHostKeyChecking=no centos@".$ips[$idx]." 'java -jar tiled-dsm/target/dsm-jar-with-dependencies.jar -port $port -id node-$ips[$idx]_$port";
+			if ( $n != "" ) $cmd.= " -a_n $n:$port:node-$n"."_$port";
+			if ( $e != "" ) $cmd.= " -a_e $e:$port:node-$e"."_$port";
+			if ( $s != "" ) $cmd.= " -a_s $s:$port:node-$s"."_$port";
+			if ( $w != "" ) $cmd.= " -a_w $w:$port:node-$w"."_$port";
+			$cmd.=" -log_filename $ips[$idx].$port -log_interval 1";
+			$cmd.=" -x $j -y $i";
+			$cmd.=" -resource /home/centos/tiled-dsm/web";
 			$cmd.=" > $ips[$idx].$port.log' &\n";
 			echo $cmd;
-			$cmd = "ssh -i ~/.ssh/ec2ymok.pem -o StrictHostKeyChecking=no centos@".$ips[$idx]." 'dstat -a -t --output ~/dstat.$ips[$idx].$port.csv 1 > /dev/null &' &\n";
+			$cmd = "ssh -i ~/.ssh/$key_name.pem -o StrictHostKeyChecking=no centos@".$ips[$idx]." 'dstat -a -t --output ~/dstat.$ips[$idx].$port.csv 1 > /dev/null &' &\n";
 			echo $cmd;
 		}
 	}

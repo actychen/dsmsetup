@@ -1,19 +1,23 @@
 <?php
 
-	$len = 2;
+	$len = 5;
 	$count = $len * $len;
-	$image_id = "ami-0ae67124027d8102d";
+	$image_id = "ami-05275306922a50eef";
 	$instance_type = "t2.micro";
-	$key_name = "ec2ymok";
-	$security_group_id = "sg-0af76c0be3b5d69d2";
-	$subnet_id = "subnet-090299c0796b8df0f";
+	$key_name = "ymok";
+	$security_group_id = "sg-0bbcec0ba985248b6";
 
-	$tag = "exp_l4_dracena_node";
+	$subnet_id = "subnet-8de82ec5";
+
+
+	$tag = "dsm_node_l5_20200115_00";
 
 	$tags = array();
 
-	for ( $i = 0; $i < $count; $i++ ){
-		$tags[] = $tag."_$i";
+	for ( $i = 0; $i < $len; $i++ ){
+		for ( $j = 0; $j < $len; $j++ ){
+			$tags[] = $tag."_".$i."_".$j;
+		}
 	}
 
 ?>
